@@ -44,13 +44,13 @@ struct Node* listPrepend(struct Node *head) {
 	scanf("%d", &(newNode->x));
 
 	newNode->next=head;
-	head=newNode
+	head=newNode;
 
 	return head;
 }
 
 //AGGIUNGE UN ELEMENTO IN POSIZIONE n
-void listInsert(struct Node *head, int n) {
+struct Node * listInsert(struct Node *head, int n) {
 
 	if(n<=0)
 		printf("Posizione non valida.");
@@ -85,8 +85,7 @@ void listInsert(struct Node *head, int n) {
 			}
 			newNode->next=temp->next;
 			temp->next=newNode;
-			printf("\nElemento aggiunto in posizione %d.\n
-				Se la posizione era maggiore del numero di elementi nella lista, è stato aggiunto in ultima posizione", i+1);
+			printf("\nElemento aggiunto in posizione %d.\nSe la posizione era maggiore del numero di elementi nella lista, è stato aggiunto in ultima posizione", i+1);
 		}
 	}
 	return head;
@@ -100,7 +99,7 @@ void printList(struct Node *head) {
 		printf("La lista non contiene elementi.\n");
 
 	else{
-		printf("Lista: ")
+		printf("Lista: ");
 		while(head!=NULL) {
 			printf("%d ", &(head->x));
 			head=head->next;
@@ -113,18 +112,18 @@ void recPrintList(struct Node *head) {
 	if(head==NULL)
 		printf(" Fine.\n");
 	else {
-		printf(head->x);
+		printf("%d", head->x);
 		recPrintList(head->next);
 	}
 }
 
 //STAMPA TUTTA LA LISTA RICORSIVAMENTE AL CONTRARIO
-void recPrintList(struct Node *head) {
+void recPrintList2(struct Node *head) {
 	if(head==NULL)
 		printf("\n");
 	else {
 		recPrintList(head->next);
-		printf(head->x);
+		printf("%d", head->x);
 	}
 }
 
@@ -136,11 +135,7 @@ int main() {
 	int quit=0;
 	while (quit==0) {
 
-		printf("Operazioni possibili: \n
-			0. Termina il programma.\n
-			1. Aggiungi un elemento n volte alla fine della lista.\n
-			2. Aggiungi un elemento n volte all'inizio della lista.\n
-			3. Aggiungi un elemento in una posizione nella lista.\n");
+		printf("Operazioni possibili: \n0. Termina il programma.\n1. Aggiungi un elemento n volte alla fine della lista.\n2. Aggiungi un elemento n volte all'inizio della lista.\n3. Aggiungi un elemento in una posizione nella lista.\n");
 
 		int function; scanf("%d", &function);
 
@@ -160,7 +155,7 @@ int main() {
 			int n2; scanf("%d", &n2);
 
 			for(int i=1; i<=n2; i++)
-				head=listprepend(head);
+				head=listPrepend(head);
 		}
 
 		if(function==3) {
@@ -170,7 +165,7 @@ int main() {
 				head=listInsert(head, n3);
 		}
 
-		if(function==)
+		if(function==4)
 			printList(head);
 	}
 }
